@@ -1,0 +1,34 @@
+-- Step 1: Create the Database
+CREATE DATABASE IF NOT EXISTS pharmacy_db;
+USE pharmacy_db;
+
+-- Step 2: Create the Users Table
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(50) NOT NULL
+);
+
+-- Step 3: Insert Default Admin User
+INSERT INTO users (username, password) VALUES ('root', 'snehitha');
+
+-- Step 4: Create the Medicines Table
+CREATE TABLE IF NOT EXISTS medicines (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    quantity INT NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    supplier VARCHAR(100) NOT NULL
+);
+
+-- Step 5: Insert Sample Data into Medicines Table
+INSERT INTO medicines (name, quantity, price, supplier) VALUES 
+('Paracetamol', 50, 10.50, 'ABC Pharma'),
+('Ibuprofen', 30, 15.00, 'XYZ Suppliers'),
+('Amoxicillin', 20, 25.75, 'MediCorp'),
+('Cough Syrup', 40, 12.00, 'HealthPlus');
+
+-- Step 6: View All Data from Both Tables
+SELECT * FROM users;
+SELECT * FROM medicines;
+
